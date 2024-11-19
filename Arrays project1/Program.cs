@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -12,8 +12,103 @@ namespace Arrays_project1
     {
         static void Main(string[] args)
         {
-
             Console.ReadLine();
+        }
+        static void Targil5()
+        {
+            int[] Num = new int[40];
+            Console.WriteLine("insert 40 numbers");
+            Input(Num);
+            Array.Sort(Num);
+            Console.WriteLine("insert numbers to check if their in the array to stop put -1");
+            int input = int.Parse(Console.ReadLine());
+            while (input != -1)
+            {
+                int SearchLocation = Search(Num, input);
+
+                int CaculateSum = 0;
+
+                if (SearchLocation != -1)
+                {
+                    for (int i = 0; i < SearchLocation; i++) CaculateSum += Num[i];
+                    Console.WriteLine($"the number you inputed {input} is located in the array at {SearchLocation}");
+                }
+                else
+                {
+                    for (int i = 0; i < Num.Length; i++)
+                    {
+                        if (Num[i] > input)
+                        {
+                            SearchLocation = i;
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < SearchLocation; i++)
+                    {
+                        CaculateSum += Num[i];
+                    }
+                    Console.WriteLine($"the number {input} wasent found the larger number in the array is at {SearchLocation} and the sum of all the numbers before him is {CaculateSum}");
+                }
+            }
+
+        }
+        static int Search(int[] Num, int input)
+        {
+            for (int i = 0; i < Num.Length; i++)
+            {
+                if (Num[i] == input) return i;
+            }
+            return -1;
+        }
+        static void Targil4()
+        {
+            int[] N = new int[20];
+            int[] M = new int[60];
+            Input(M);
+            N = CaculateN(N, M);
+            WriteOutPut(N);
+
+        }
+        static void WriteOutPut(int[] N)
+        {
+            for (int i = 0; i < N.Length; i++)
+            Console.WriteLine(N[i]);
+
+        }
+        static int[] CaculateN(int[] N, int[] M)
+        {
+            
+            for (int i = 0; i < N.Length; i++)
+            {
+                int num1 = M[i * 3];
+                int num2 = M[i * 3 + 1];
+                int code = M[i * 3 + 2];
+                if (code == 1) N[i] = num1 + num2;
+                else if (code == 2) N[i] = num1 - num2;
+                else if (code == 3) N[i] = num1 * num2;
+                else if (code == 4) N[i] = num1 / num2;
+            }
+            return N;
+        }
+        static void Targil2()
+        {
+            int[] guess = new int[15];
+            int[] result = new int[15];
+            Console.WriteLine("insert 15 guesses");
+            Input(guess);
+            Console.WriteLine("insert 15 result");
+            Input(result);
+            int CorrectCount = IsCorrect(guess, result);
+            Console.WriteLine($"the amount of the correct guesses is {CorrectCount}");
+        }
+        static int IsCorrect(int[] guess, int[] result)
+        {
+            int CorrectCount = 0;
+            for (int i = 0; i < guess.Length; i++)
+            {
+                if (guess[i] == result[i]) CorrectCount++;
+            }
+            return CorrectCount;
         }
         static void Targil3()
         {
