@@ -13,13 +13,24 @@ namespace Arrays_project1
     {
         static void Main(string[] args)
         {
+
+            Console.ReadLine();
+        }
+        static void targil7()
+        {
             int[] arr1 = new int[5];
             int[] arr2 = new int[5];
             Input(arr1);
             Input(arr2);
+            double avg1 = AVG(arr1);
+            double avg2 = AVG(arr2);
+            double result = avg1 * 100 / avg2;
+            if (result >= 25)
+            {
+                Console.WriteLine("there was a significant improvement");
+            }
+            else Console.WriteLine("there wasent a significant improvement");
 
-
-            Console.ReadLine();
         }
         static void targil6()
         {
