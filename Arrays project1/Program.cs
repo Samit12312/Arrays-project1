@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,53 @@ namespace Arrays_project1
     {
         static void Main(string[] args)
         {
+            int[] arr1 = new int[5];
+            int[] arr2 = new int[5];
+            Input(arr1);
+            Input(arr2);
+
+
             Console.ReadLine();
+        }
+        static void targil6()
+        {
+            int[] seats = new int[5];
+            int seatnumber = 0;
+            int num = 1;
+            for (int i = 0; i < seats.Length; i++)
+            {
+                seatnumber = int.Parse(Console.ReadLine());
+                if (seats[seatnumber] == 0)
+                {
+                    Console.WriteLine("you can sit in your chosen seat");
+                    seats[seatnumber] = 1;
+                }
+                else
+                    while (seats[seatnumber] != 0)
+                    {
+                        if (seats[seatnumber + num] == 0)
+                        {
+                            Console.WriteLine($"you can seat in seatnumber {seatnumber + num}");
+                            seats[seatnumber + num] = 1;
+                            break;
+                        }
+
+                        else if (seats[seatnumber - num] == 0)
+                        {
+                            Console.WriteLine($"you can seat in {seatnumber - num}");
+                            seats[seatnumber - num] = 1;
+                            break;
+                        }
+                        else if (num > seats.Length)
+                        {
+                            Console.WriteLine("there no seats left");
+                        }
+                        else num++;
+
+
+                    }
+
+            }
         }
         static void Targil5()
         {
